@@ -1,0 +1,312 @@
+/* ========================================
+   Flask Notes App - Custom Styling
+   Beginner-friendly CSS for enhanced UI/UX
+   ======================================== */
+
+:root {
+  /* Define reusable colors as CSS variables */
+  --primary-color: #0d6efd;
+  --success-color: #198754;
+  --danger-color: #dc3545;
+  --light-bg: #f8f9fa;
+  --border-radius: 0.5rem;
+}
+
+/* ========================================
+   Global Styles
+   ======================================== */
+
+body {
+  /* Set default font stack for better readability */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  /* Make main content area grow to fill available space */
+  flex: 1;
+}
+
+/* Smooth scroll behavior across browsers */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========================================
+   Navigation Bar
+   ======================================== */
+
+.navbar {
+  /* Add subtle shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  /* Make the brand stand out */
+  font-size: 1.5rem;
+  color: white !important;
+}
+
+.nav-link {
+  /* Smooth transition for hover effects */
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ========================================
+   Cards (Note Cards)
+   ======================================== */
+
+.note-card {
+  /* Add subtle shadow and border */
+  border: 1px solid #e9ecef;
+  background-color: white;
+  border-radius: var(--border-radius);
+  
+  /* Smooth transition for hover effect */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.note-card:hover {
+  /* Lift card on hover for visual feedback */
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-title {
+  /* Make titles visually distinct */
+  color: #212529;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.note-content {
+  /* Limit content preview to 3 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 1.5;
+  color: #6c757d;
+}
+
+/* ========================================
+   Forms
+   ======================================== */
+
+.form-control,
+.form-label {
+  /* Enhance form element styling */
+  border-radius: var(--border-radius);
+}
+
+.form-control:focus {
+  /* Improve focus state visibility */
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.form-label {
+  /* Make labels more readable */
+  font-weight: 500;
+  color: #212529;
+  margin-bottom: 0.5rem;
+}
+
+textarea.form-control {
+  /* Improve textarea appearance */
+  resize: vertical;
+  min-height: 200px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+
+.btn {
+  /* Consistent button styling */
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-sm {
+  /* Smaller buttons for actions in cards */
+  padding: 0.35rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+/* ========================================
+   Alerts
+   ======================================== */
+
+.alert {
+  /* Polish alert boxes */
+  border-radius: var(--border-radius);
+  border: none;
+  margin-bottom: 1.5rem;
+  
+  /* Auto-dismiss animation */
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   Empty State
+   ======================================== */
+
+.card.bg-light {
+  /* Style for empty state messages */
+  border: 2px dashed #dee2e6;
+}
+
+.card.bg-light .card-body {
+  padding: 3rem 1rem;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+footer {
+  /* Ensure footer is at bottom */
+  margin-top: auto;
+  background-color: white !important;
+}
+
+footer p {
+  font-size: 0.9rem;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+/* Tablets (768px and up) */
+@media (max-width: 767.98px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .note-card {
+    margin-bottom: 1rem;
+  }
+
+  .btn-sm {
+    margin-right: 0.25rem;
+  }
+}
+
+/* Mobile devices (under 576px) */
+@media (max-width: 575.98px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  textarea.form-control {
+    min-height: 150px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .d-flex.gap-2 {
+    flex-direction: column;
+  }
+
+  .d-flex.gap-2 .btn {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   Utilities
+   ======================================== */
+
+/* Text truncation for long titles */
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Loading state styling */
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Improve contrast for better accessibility */
+.text-muted {
+  color: #6c757d !important;
+}
+
+/* ========================================
+   Dark Mode Support (Future Enhancement)
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+  }
+
+  .card {
+    background-color: #2a2a2a;
+    border-color: #404040;
+  }
+
+  .form-control {
+    background-color: #3a3a3a;
+    border-color: #404040;
+    color: #e0e0e0;
+  }
+
+  .form-label {
+    color: #e0e0e0;
+  }
+}

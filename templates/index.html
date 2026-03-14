@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}All Notes | Flask Notes{% endblock %}
+
+{% block content %}
+<!-- Header section with quick add button -->
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div>
+        <h1 class="h3 mb-1">Your Notes</h1>
+        <p class="text-muted mb-0">Create, edit, and delete notes with SQLite storage.</p>
+    </div>
+    <a href="{{ url_for('add_note') }}" class="btn btn-primary">+ Add New Note</a>
+</div>
+
+{% if notes %}
+    <div class="row g-3">
+        {% for note in notes %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <!-- Note card for each database record -->
+                <div class="card shadow-sm h-100 note-card">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="h5 card-title mb-2">{{ note['title'] }}</h2>
+                        <p class="card-text text-muted note-content mb-3">{{ note['content'] }}</p>
+                        <p class="small text-secondary mb-3">Created: {{ note['created_date'] }}</p>
+
+                        <div class="mt-auto d-flex gap-2">
+                            <a href="{{ url_for('edit_note', note_id=note['id']) }}" class="btn btn-outline-secondary btn-sm">Edit</a>
+                            <!-- Delete uses POST for safer state-changing action -->
+                            <form action="{{ url_for('delete_note', note_id=note['id']) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this note?');">
+                                <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <!-- Empty state shown when there are no notes yet -->
+    <div class="card border-0 bg-light">
+        <div class="card-body text-center py-5">
+            <h2 class="h5">No notes yet</h2>
+            <p class="text-muted">Start by creating your first note.</p>
+            <a href="{{ url_for('add_note') }}" class="btn btn-primary">Create First Note</a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

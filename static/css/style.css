@@ -1,0 +1,21 @@
+/* Keep custom styles minimal and beginner-friendly */
+
+body {
+    background-color: #f8f9fa;
+}
+
+.note-card {
+    transition: transform 0.15s ease;
+}
+
+.note-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Clamp note content for cleaner card layout */
+.note-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

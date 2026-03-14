@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Server Error | Flask Notes{% endblock %}
+
+{% block content %}
+<!-- Error page for 500 internal server error -->
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow-sm border-0 text-center">
+            <div class="card-body py-5">
+                <h1 class="display-6 fw-bold mb-2">500</h1>
+                <p class="lead mb-3">Internal Server Error</p>
+                <p class="text-muted">Something went wrong on our end. Please try again later.</p>
+                <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

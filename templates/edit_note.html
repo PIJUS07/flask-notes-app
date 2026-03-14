@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Note | Flask Notes{% endblock %}
+
+{% block content %}
+<!-- Form page for editing an existing note -->
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h1 class="h4 mb-3">Edit Note</h1>
+                <form method="POST" novalidate>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="title"
+                            name="title"
+                            value="{{ note['title'] }}"
+                            required
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Content</label>
+                        <textarea
+                            class="form-control"
+                            id="content"
+                            name="content"
+                            rows="6"
+                            required
+                        >{{ note['content'] }}</textarea>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Update Note</button>
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
